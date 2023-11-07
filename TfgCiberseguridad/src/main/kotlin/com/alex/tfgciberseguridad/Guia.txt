@@ -1,0 +1,31 @@
+Primera api
+sin roles , sin seguridad, sin validadores,sin exepciones
+Segunda version
+roles , validadores
+tercera version
+spring security
+
+
+front primera version
+sin validadores de que es lo que le envio al back
+constraseña sin cifrar
+
+segunda version validando y inicio de sesion con token
+
+//COSAS QUE HACER
+
+2 modelos
+crear base de datos
+Script base de datos
+Jpa hace consultas ( con jpa se hace solo ) (repo, servicio controllador)
+configurar base de datos
+
+(maybe front)
+
+
+en la primera version la constraseña no se guarda cifrada tampoco, hay que crear clase password Encode
+
+
+
+
+

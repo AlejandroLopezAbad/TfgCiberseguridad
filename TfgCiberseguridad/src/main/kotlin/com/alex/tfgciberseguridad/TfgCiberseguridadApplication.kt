@@ -1,11 +1,11 @@
-package com.alex.tfgcibersugirdad
+package com.alex.tfgciberseguridad
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class TfgCibersugirdadApplication
+class TfgCiberseguridadApplication
 
 fun main(args: Array<String>) {
-    runApplication<TfgCibersugirdadApplication>(*args)
+    runApplication<TfgCiberseguridadApplication>(*args)
 }
