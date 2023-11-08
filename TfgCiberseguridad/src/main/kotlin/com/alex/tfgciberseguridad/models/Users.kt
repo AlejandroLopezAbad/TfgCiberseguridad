@@ -10,14 +10,13 @@ import org.springframework.data.relational.core.mapping.Table
  */
 
 @Table(name = "users")
-
 data class Users(
     @Id
-    val id :Long?=null,
+    val id :Long,
     @Column("email")
     val email:String,
-    @Column("name")
-    val username:String,
+    @Column("username")
+    val username:String?,
     @get:JvmName("userPassword")
     @Column("password")
     val password:String,
@@ -26,8 +25,7 @@ data class Users(
     @Column("dni")
     val dni:String,
 
-    @Column("numCuenta")
-    val numCuenta:List<BankAccount>
+    var numCuenta:List<BankAccount> = listOf()
 
 
    /* @Column("rol")

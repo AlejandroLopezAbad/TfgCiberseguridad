@@ -7,5 +7,5 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 
 interface BankAccountRepository : CoroutineCrudRepository<BankAccount, Long> {
 
-    fun findAllByUserId(userId:Long): Flow<List<BankAccount>>
+    fun findAllByUserId(userId:Long): Flow<BankAccount>
 }

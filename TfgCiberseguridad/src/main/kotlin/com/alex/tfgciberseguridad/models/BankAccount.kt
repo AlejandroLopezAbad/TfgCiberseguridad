@@ -13,6 +13,7 @@ data class BankAccount(
     val saldo:Double,
     @Column("prestamos")
     val prestramos:Boolean,
+
     @Column("user_id")
     val userId:Long
 ) {
