@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.query.Param
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 private val logger = KotlinLogging.logger {}
@@ -29,8 +30,8 @@ class BankAccountController @Autowired constructor(
 
         return ResponseEntity.ok(res)
     }
-    @GetMapping("/cuentasociada")
-    suspend fun cuentaAsociada(id:Long):ResponseEntity<List<BankAccount>>{
+    @GetMapping("/cuentasociada/{id}")
+    suspend fun cuentaAsociada(@PathVariable id:Long):ResponseEntity<List<BankAccount>>{
 
         val res =bankService.findCuentaAsociada(id).toList();
 
