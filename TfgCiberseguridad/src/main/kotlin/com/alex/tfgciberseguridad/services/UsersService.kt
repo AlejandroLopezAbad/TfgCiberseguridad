@@ -4,9 +4,12 @@ import com.alex.tfgciberseguridad.models.Users
 import com.alex.tfgciberseguridad.repositories.UsersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
 
 private val logger = KotlinLogging.logger {}
@@ -16,7 +19,15 @@ private val logger = KotlinLogging.logger {}
 class UsersService
 @Autowired constructor(private val repository:UsersRepository
 //private val passwordEndocer:PassWordEncoder
-){
+):UserDetailsService {
+
+
+    override fun loadUserByUsername(username: String): UserDetails = runBlocking {
+        return@runBlocking repository.findByEmail(username).firstOrNull()
+            ?: throw Exception("Usuario no encontrado con email:$username")
+        // UsersNotFoundException("Usuario no encontrado con username: $email") //TODO EXCEPCIONES
+    }
+
 
     /**
      * Buscar a todos los usuarios
@@ -41,14 +52,14 @@ class UsersService
      * @return el usuario guardado.
      */
 
-    suspend fun save(user:Users):Users= withContext(Dispatchers.IO){
+    suspend fun save(user: Users): Users = withContext(Dispatchers.IO) {
         logger.info { "Guardando usuario: $user" }
         //TODO
 
 
-        try{
+        try {
             return@withContext repository.save(user)
-        }catch (e:Exception){
+        } catch (e: Exception) {
             throw Exception("no guardado")
         }
 
@@ -63,7 +74,7 @@ class UsersService
     suspend fun update(user: Users) = withContext(Dispatchers.IO) {
         logger.info { "Actualizando usuario: $user" }
         //TODO COMPROBAR QUE EL USUARIO EXISTE
-/*        var userDB = repository.findByUsername(user.username)
+        /*        var userDB = repository.findByUsername(user.username)
             .firstOrNull()
 
         val updateUser= use*/

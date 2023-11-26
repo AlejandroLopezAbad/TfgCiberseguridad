@@ -8,10 +8,11 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
                                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                      email VARCHAR(255) NOT NULL,
-                                     username VARCHAR(255) NOT NULL,
+                                     name VARCHAR(255) NOT NULL,
                                      password VARCHAR(255) NOT NULL,
                                      telephone INT NOT NULL,
-                                     dni VARCHAR(255) NOT NULL
+                                     dni VARCHAR(255) NOT NULL,
+                                     rol VARCHAR(255) NOT NULL
 
 );
 
@@ -26,12 +27,12 @@ CREATE TABLE IF NOT EXISTS bankAccount (
                                            FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-INSERT INTO users (email, username, password, telephone, dni) VALUES
-                                                                             ('usuario1@email.com', 'usuario1', 'contraseña1', 123456789, '12345678A'),
-                                                                             ('usuario2@email.com', 'usuario2', 'contraseña2', 987654321, '87654321B'),
-                                                                             ('alex@email.com','alexitto', 'prueba', 854411245, '87954514B'),
-                                                                             ('xCard@email.com','xCard', 'prueba', 535844965, '36521452B'),
-                                                                             ('roberto@email.com','SupGAP', 'thresh', 585442142, '51421402N');
+INSERT INTO users (email, name, password, telephone, dni,rol) VALUES
+                                                                             ('usuario1@email.com', 'usuario1', 'contraseña1', 123456789, '12345678A','USER'),
+                                                                             ('usuario2@email.com', 'usuario2', 'contraseña2', 987654321, '87654321B','USER'),
+                                                                             ('alex@email.com','alexitto', 'prueba', 854411245, '87954514B','ADMIN'),
+                                                                             ('xCard@email.com','xCard', 'prueba', 535844965, '36521452B','USER'),
+                                                                             ('roberto@email.com','SupGAP', 'thresh', 585442142, '51421402N','USER');
 
 INSERT INTO bankAccount (numCuenta, saldo, prestamos, user_id) VALUES
                                                                    ('ES1620804498074734802768', 1000.0, 0, 1),

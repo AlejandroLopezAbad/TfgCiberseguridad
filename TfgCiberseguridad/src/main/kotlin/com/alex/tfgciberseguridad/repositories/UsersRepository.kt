@@ -7,13 +7,19 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface UsersRepository:CoroutineCrudRepository<Users,Long> {
+
     /**
-     * Find by username
+     * Find by email
      *
-     * @param username
+     * @param email
      * @return
      */
-    fun findByUsername(username:String): Flow<Users>
+    fun findByEmail(email:String):Flow<Users>
+
+
+
+
+
 
 
 }

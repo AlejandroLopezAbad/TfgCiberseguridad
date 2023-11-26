@@ -3,6 +3,9 @@ package com.alex.tfgciberseguridad.models
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
 
 
 /**
@@ -15,8 +18,8 @@ data class Users(
     val id :Long,
     @Column("email")
     val email:String,
-    @Column("username")
-    val username:String?,
+    @Column("name")
+    val name:String,
     @get:JvmName("userPassword")
     @Column("password")
     val password:String,
@@ -24,18 +27,43 @@ data class Users(
     val telephone:Int = 787744741,
     @Column("dni")
     val dni:String,
+    @Column("rol")
+    val rol :String=TypeRol.USER.name,
 
-    var numCuenta:List<BankAccount> = listOf()
 
-
-   /* @Column("rol")
-    val rol :String=TypeRol.USER.name,*/
-
-) {
-/*
+) : UserDetails {
     enum class TypeRol() {
-        USER,ADMIN,SUPERADMIN
-    }*/
+        USER,ADMIN,
+    }
+    override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
+        return rol.split(",").map { SimpleGrantedAuthority("ROLE_${it.trim()}") }.toMutableList()
+    }
+
+
+    override fun getPassword(): String {
+        return password
+    }
+
+    override fun getUsername(): String {
+        return email
+
+    }
+
+    override fun isAccountNonExpired(): Boolean {
+        return true
+    }
+
+    override fun isAccountNonLocked(): Boolean {
+        return true
+    }
+
+    override fun isCredentialsNonExpired(): Boolean {
+        return true
+    }
+
+    override fun isEnabled(): Boolean {
+        return true
+    }
 }
 
 /**

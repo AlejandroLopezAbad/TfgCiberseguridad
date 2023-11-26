@@ -42,7 +42,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     //security provider
     // Dependencias de Seguridad Lo usaremos más adelante
-    // implementation("org.springframework.boot:spring-boot-starter-security")
+     implementation("org.springframework.boot:spring-boot-starter-security")
 
     runtimeOnly("org.mariadb:r2dbc-mariadb:1.1.3")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
