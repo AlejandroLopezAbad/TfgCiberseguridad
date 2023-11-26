@@ -3,29 +3,36 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CiberseguradTfg": {
+    "ciberseguridad-front": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cibersegurad-tfg",
+            "outputPath": "dist/ciberseguridad-front",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           },
@@ -46,9 +53,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -57,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "CiberseguradTfg:build:production"
+              "browserTarget": "ciberseguridad-front:build:production"
             },
             "development": {
-              "buildTarget": "CiberseguradTfg:build:development"
+              "browserTarget": "ciberseguridad-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "CiberseguradTfg:build"
+            "browserTarget": "ciberseguridad-front:build"
           }
         },
         "test": {
@@ -79,12 +89,15 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           }
@@ -93,6 +106,6 @@
     }
   },
   "cli": {
-    "analytics": "7606068d-b215-4cfb-9d34-76f5745a4ba8"
+    "analytics": false
   }
 }
