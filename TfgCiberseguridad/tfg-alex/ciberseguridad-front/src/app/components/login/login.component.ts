@@ -31,9 +31,11 @@ export class LoginComponent implements OnInit {
     }
 
     log() {
-        if(this.login.username != null && this.login.password != null) {
+        if(this.login.email != null && this.login.password != null) {
+           
             this.userService.login(this.login).subscribe(resul => {
-                this.router.navigate(['/userTable']);
+                console.log(resul);
+                this.router.navigate(['/user-table']);
             });
         } else {
             this.showMessage = true;

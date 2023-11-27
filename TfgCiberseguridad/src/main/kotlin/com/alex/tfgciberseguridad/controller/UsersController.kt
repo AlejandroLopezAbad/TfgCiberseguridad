@@ -26,6 +26,7 @@ private val logger = KotlinLogging.logger {}
 
 @RestController
 @RequestMapping(APIConfig.API_PATH+"/users")
+@CrossOrigin(origins = arrayOf("http://localhost:4200"))
 class UsersController
 @Autowired constructor(
     private val usersService:UsersService,
@@ -34,6 +35,7 @@ class UsersController
     private val jwtTokenUtil: JwtTokenUtil,
 
     ){
+
 
     @PostMapping("/login")
     fun login(@Valid @RequestBody logingDto: UsersLoginDto): ResponseEntity<UsersWithTokenDto> {

@@ -1,0 +1,23 @@
+
+<app-nav></app-nav>
+<p-table [value]="bankAccounts" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="numCuenta" style="width:20%">numCuenta <p-sortIcon field="numCuenta"></p-sortIcon></th>
+            <th pSortableColumn="saldo" style="width:20%">saldo <p-sortIcon field="saldo"></p-sortIcon></th>
+            <th pSortableColumn="prestramos" style="width:20%">prestramos <p-sortIcon field="prestramos"></p-sortIcon></th>
+            <th pSortableColumn="userName" style="width:20%">userName<p-sortIcon field="userName"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bankAccounts>
+        <tr>
+            <td>{{bankAccounts.numCuenta}}</td>
+            <td>{{bankAccounts.saldo}}</td>
+            <td *ngIf="bankAccounts.prestramos">Si</td>
+            <td *ngIf="!bankAccounts.prestramos">No</td>
+            <td>{{bankAccounts.userName}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+

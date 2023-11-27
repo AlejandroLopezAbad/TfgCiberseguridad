@@ -1,9 +1,9 @@
 export class Login {
-    username: string | null;
+    email: string | null;
     password: string | null;
 
     constructor() {
-        this.username = null;
+        this.email = null;
         this.password = null;
     }
 }

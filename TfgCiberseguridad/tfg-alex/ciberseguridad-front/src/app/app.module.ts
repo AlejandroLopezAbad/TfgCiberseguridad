@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
+import { BankAccountTableComponent } from './components/bank-account-table/bank-account-table.component';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { DataViewModule } from 'primeng/dataview';
     AppComponent,
     NavComponent,
     UserTableComponent,
-    LoginComponent
+    LoginComponent,
+    BankAccountTableComponent
+   
   ],
   imports: [
     BrowserModule,

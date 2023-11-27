@@ -15,6 +15,7 @@ export class NavComponent implements OnInit {
     ngOnInit(): void {
         this.items = [
             { label: 'User', routerLink: '/user-table'},
+            { label:'Numeros De Cuenta',routerLink:'/bank-account-table'}
         ];
 
         this.activeItem = this.items[0];
