@@ -12,8 +12,10 @@ services:
       - "3307:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+
+
   servicio-ciberseguridad:
-    build: .
+    image: imagenciberseguridad:latest
     container_name: servicio-ciberseguridad
     ports:
       - "8081:8081"
