@@ -12,3 +12,10 @@ services:
       - "3307:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+  servicio-ciberseguridad:
+    build: .
+    container_name: servicio-ciberseguridad
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mariaDb
