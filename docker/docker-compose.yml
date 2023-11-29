@@ -15,9 +15,11 @@ services:
 
 
   servicio-ciberseguridad:
-    image: imagenciberseguridad:latest
+    image: alexitto/tfg_ciberseguridad:latest
     container_name: servicio-ciberseguridad
+    environment:
+      CONNECTION_STRING: r2dbc:mariadb://root:password@mariaDb:3306/ciberseguridad
     ports:
       - "8081:8081"
     depends_on:
-      - mariaDbd
+      - mariaDb
