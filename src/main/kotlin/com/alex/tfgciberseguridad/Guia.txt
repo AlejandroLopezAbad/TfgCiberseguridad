@@ -1,30 +1,36 @@
-Primera api
-sin roles , sin seguridad, sin validadores,sin exepciones
-Segunda version
-roles , validadores
-tercera version
-spring security
 
 
-front primera version
-sin validadores de que es lo que le envio al back
-constraseña sin cifrar
-
-segunda version validando y inicio de sesion con token
-
-//COSAS QUE HACER
-
-2 modelos
-crear base de datos
-Script base de datos
-Jpa hace consultas ( con jpa se hace solo ) (repo, servicio controllador)
-configurar base de datos
-
-(maybe front)
+exepciones , validadores
 
 
-en la primera version la constraseña no se guarda cifrada tampoco, hay que crear clase password Encode
+COMANDO ACTUALIZAR IMAGEN DEL FRONT
+docker compose -f docker-composeVULNERABLE.yml pull
 
+Realizar Memoria fecha limite 10
+Lunes 4 Martes 5 ,
+Decorar Front
+Subir Front Decorado sin seguridad de token (github o lo server) hoy
+Cambiar username en tabla bank
+crear mensaje no te logeas.
+
+
+Hacer los ataque diccionario
+Hacer ataque ver el tree de las paginas ( no va a dejar )
+hacer ataque ver puertos del servidor
+hacer ataque intento D2
+
+
+Crear segundo docker compose en el servirdor con puertobase de datos capado
+
+
+poner ngix en el server (limitacion peticiones) (solo en el secure)
+
+
+hacer peticiones postman.
+
+Para hacer dos docker compose una vulnerable y otra no
+meterme en el docker compose vulnerable y cambiar latest por el tag
+de la ultima vulnerable
 
 
 
