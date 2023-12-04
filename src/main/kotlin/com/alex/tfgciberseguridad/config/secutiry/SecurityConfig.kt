@@ -4,6 +4,7 @@ import com.alex.tfgciberseguridad.config.secutiry.jwt.JwtAuthenticationFilter
 import com.alex.tfgciberseguridad.config.secutiry.jwt.JwtAuthorizationFilter
 import com.alex.tfgciberseguridad.config.secutiry.jwt.JwtTokenUtil
 import com.alex.tfgciberseguridad.services.UsersService
+import jakarta.servlet.http.HttpServletResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -57,18 +58,38 @@ class SecurityConfig
             .authenticationManager(authenticationManager)
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
+//            .exceptionHandling()
+//            .authenticationEntryPoint { request, response, e ->
+//                response.contentType = "application/json;charset=UTF-8"
+//                response.status = HttpServletResponse.SC_FORBIDDEN
+//                // Loggeando el error
+//                println("Access denied: "+ e.toString())
+//                println("Request details: " + request.toString())
+//
+//            } .and()
+
             .authorizeHttpRequests()
+            .requestMatchers("/static/**").permitAll()
             .requestMatchers("/error/**").permitAll()
+            .requestMatchers("/**").permitAll()
+
 //
 
             .requestMatchers("/api/**").permitAll() //esto permite todas las consultas a la api
-            .requestMatchers("/api/users/list").permitAll()
 
             .requestMatchers("/api/users/login").permitAll()
+            //TODO CON ESTO PUEDE LANZAR LA PETICION CUALQUIERA ES UNA BRECHA DE SEGURIDAD
+            .requestMatchers("/api/users/list").permitAll()
+            .requestMatchers("/api/bankAccount/list").permitAll()
 
+
+//              TODO CAPAR LAS RUTAS
+//            .requestMatchers("/api/users/list").hasAnyRole("USER","ADMIN")
+//            .requestMatchers("/api/bankAccount/list").hasAnyRole("USER","ADMIN")
 //           /.permitAll()//.hasAnyRole("EMPLOYEE","ADMIN","SUPERADMIN")
-//            .requestMatchers("/api/users/me").permitAll()//.hasAnyRole("USER","EMPLOYEE","ADMIN","SUPERADMIN")
+
             .and()
+
             .addFilter(JwtAuthenticationFilter(jwtTokenUtil, authenticationManager))
             .addFilter(JwtAuthorizationFilter(jwtTokenUtil, userService, authenticationManager))
 

@@ -28,11 +28,11 @@ CREATE TABLE IF NOT EXISTS bankAccount (
 );
 
 INSERT INTO users (email, name, password, telephone, dni,rol) VALUES
-                                                                             ('usuario1@email.com', 'usuario1', 'contraseña1', 123456789, '12345678A','USER'),
-                                                                             ('usuario2@email.com', 'usuario2', 'contraseña2', 987654321, '87654321B','USER'),
-                                                                             ('alex@email.com','alexitto', 'prueba', 854411245, '87954514B','ADMIN'),
-                                                                             ('xCard@email.com','xCard', 'prueba', 535844965, '36521452B','USER'),
-                                                                             ('roberto@email.com','SupGAP', 'thresh', 585442142, '51421402N','USER');
+                                                                             ('usuario1@email.com', 'usuario1', '$2a$12$Ua/cLtECVqKIGC2kJ0bMYe/4mE39iyMftnHeB/SnleO8mdAo3outi', 123456789, '12345678A','USER'),
+                                                                             ('usuario2@email.com', 'usuario2', '$2a$12$QQZTmcP5lt83PdSCxtW6E.1qkGJn.vB2A.If.5HqiubYEgW/jptce', 987654321, '87654321B','USER'),
+                                                                             ('alex@email.com','alexitto', '$2a$12$yFCP2LbUqQLPJKbmmJZ53.RbG/.TidEfqYABMU.rrdSc1FB84b84u', 854411245, '87954514B','ADMIN'),
+                                                                             ('xCard@email.com','xCard', '$2a$12$Bykc3ecwmDOfIt7sMHfwcOpSUT4D6OIpYtl7sXl6ZRyTjT1soU5Fi', 535844965, '36521452B','USER'),
+                                                                             ('roberto@email.com','SupGAP', '$2a$12$4N2HAZh3H3.H8ufJKYPO9eCzJw2qPg8rrNdWQgFUjCJmvY5DAFsxS', 585442142, '51421402N','USER');
 
 INSERT INTO bankAccount (numCuenta, saldo, prestamos, user_id) VALUES
                                                                    ('ES1620804498074734802768', 1000.0, 0, 1),
