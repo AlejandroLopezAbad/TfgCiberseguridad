@@ -5,3 +5,62 @@
 .margin-top {
     margin-top: 20px;
 }
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%; /* Ajusta la posición vertical al 50% de la pantalla */
+    transform: translateY(-50%); /* Centra verticalmente el contenedor */
+    right: 20px; /* Ajusta la posición horizontal desde el lado derecho */
+
+  
+}
+
+p-button{
+    padding-top: 10px;
+}
+
+.fondo{
+
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca el fondo detrás del contenido */
+    background-image: url('../../../assets/fondo_banco.jpg');
+    background-size: cover;
+    background-position: center;
+ 
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+p{
+    font-weight: bold;
+}
+
+.title-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2; /* Coloca el título encima del fondo */
+    padding-left: 12.5%;
+}
+input{
+    background: rgba(255, 255, 255, 0.5);
+
+}
+
+.fuerte{
+    color: black;
+   
+}
+
+
+

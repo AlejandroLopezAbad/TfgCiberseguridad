@@ -32,6 +32,11 @@ Para hacer dos docker compose una vulnerable y otra no
 meterme en el docker compose vulnerable y cambiar latest por el tag
 de la ultima vulnerable
 
+Servicio a futuros el poder crear un usuario con cuenta bancaria ,
+FusionBank es un administrador de cuentas bancarias
+el usuario puede ver solo sus cuentas bancarias
+y el admin puede ver todas
+
 
 
 
