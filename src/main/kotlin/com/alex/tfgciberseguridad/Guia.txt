@@ -21,9 +21,19 @@ hacer ataque intento D2
 
 
 Crear segundo docker compose en el servirdor con puertobase de datos capado
+quitar el puerto expuesto de 3306 para que solo la api pueda verlo en la version secure
 
 
 poner ngix en el server (limitacion peticiones) (solo en el secure)
+otra forma seria añadir campo  boolen (bloquado tabla users ) y contador y si llega a 5 que se cambie a bloqueado
+logiga del back , cada vez que se hace una peticion de login con ese correo añadir un +1 al contador, y si es logeo acceptado que se cambie por 0,
+
+cuando llegue al limite 5 , que envie un correo,
+
+
+otro problema de seguridad es tenerlo  all en el mismo sitio por lo que para que este bien deberia estar el front por un lado y el back en otro
+y si es posible en servidores diferentes 
+
 
 
 hacer peticiones postman.
@@ -36,6 +46,10 @@ Servicio a futuros el poder crear un usuario con cuenta bancaria ,
 FusionBank es un administrador de cuentas bancarias
 el usuario puede ver solo sus cuentas bancarias
 y el admin puede ver todas
+
+
+
+
 
 
 
