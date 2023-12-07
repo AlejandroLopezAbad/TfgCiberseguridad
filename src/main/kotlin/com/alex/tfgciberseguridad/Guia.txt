@@ -2,6 +2,7 @@
 
 COMANDO ACTUALIZAR IMAGEN DEL FRONT
 docker compose -f docker-composeVULNERABLE.yml pull
+creada rama vulne 
 
 
 
