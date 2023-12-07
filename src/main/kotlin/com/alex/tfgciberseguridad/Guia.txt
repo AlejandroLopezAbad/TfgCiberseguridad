@@ -12,6 +12,8 @@ hacer ataque de que cuando logueas te devuelve un token y si te das cuenta lo ha
 
 hacer ataque intento D2
 
+FLUENT WAIT PYHTON
+
 FRONT CON EL GUARD
 
 exepciones , validadores
