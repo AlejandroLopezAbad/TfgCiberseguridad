@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
     login!:Login;
     showPass: boolean=false;
     showMessage: boolean = false;
+    errorMessage: string = "";
 
     constructor(private router:Router, private userService: UserService) {
         this.login = new Login();
@@ -35,10 +36,24 @@ export class LoginComponent implements OnInit {
            
             this.userService.login(this.login).subscribe(resul => {
                 console.log(resul);
+                
+             
                 this.router.navigate(['/user-table']);
-            });
+            },
+            (error) => {
+                if (error.status === 403) {
+                  this.errorMessage = "Credenciales incorrectas. Por favor, inténtelo de nuevo.";
+                } else {
+                  this.errorMessage = "Error al realizar el inicio de sesión. Por favor, inténtelo de nuevo más tarde.";
+                }
+                this.showMessage = true;
+              }
+            );
+            
         } else {
+           
             this.showMessage = true;
         }
+        
     }
 }
