@@ -1,38 +1,31 @@
 
 
-exepciones , validadores
-
-
 COMANDO ACTUALIZAR IMAGEN DEL FRONT
 docker compose -f docker-composeVULNERABLE.yml pull
 
-Realizar Memoria fecha limite 10
-Lunes 4 Martes 5 ,
-Decorar Front
-Subir Front Decorado sin seguridad de token (github o lo server) hoy
-Cambiar username en tabla bank
-crear mensaje no te logeas.
 
 
-Hacer los ataque diccionario
-Hacer ataque ver el tree de las paginas ( no va a dejar )
-hacer ataque ver puertos del servidor
+
+Hacer los ataque diccionario HECHO
+hacer ataque ver puertos del servidor HECHO Y ATAQUE BASE DE DATOS HECHO
+hacer ataque de que cuando logueas te devuelve un token y si te das cuenta lo hace todo el rato por id , entonces es una brecha de seguridad, (POSTMAN)
+
 hacer ataque intento D2
 
+FRONT CON EL GUARD
+
+exepciones , validadores
 
 Crear segundo docker compose en el servirdor con puertobase de datos capado
 quitar el puerto expuesto de 3306 para que solo la api pueda verlo en la version secure
 
 
-poner ngix en el server (limitacion peticiones) (solo en el secure)
+poner ngix en el server (limitacion peticiones) (solo en el secure) ( caparlo en el back ,
+
 otra forma seria añadir campo  boolen (bloquado tabla users ) y contador y si llega a 5 que se cambie a bloqueado
 logiga del back , cada vez que se hace una peticion de login con ese correo añadir un +1 al contador, y si es logeo acceptado que se cambie por 0,
 
 cuando llegue al limite 5 , que envie un correo,
-
-
-otro problema de seguridad es tenerlo  all en el mismo sitio por lo que para que este bien deberia estar el front por un lado y el back en otro
-y si es posible en servidores diferentes 
 
 
 

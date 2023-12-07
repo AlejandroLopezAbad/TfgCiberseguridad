@@ -43,7 +43,7 @@ class JwtTokenUtil {
             .withExpiresAt(tokenExpirationDate)
             .withClaim("email", user.email)
             .withClaim("name", user.name)
-        //    .withClaim("roles", user.rol.split(",").toSet().toString())
+            .withClaim("roles", user.rol.split(",").toSet().toString())
 
             .sign(Algorithm.HMAC512(jwtSecreto))
     }

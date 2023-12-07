@@ -24,7 +24,7 @@ class BankAccountController @Autowired constructor(
     private val bankService: BankAccountService,
     private val userService:UsersService
 ) {
-
+  //  @PreAuthorize("hasAnyRole('ADMIN')") cambiar security config
     @GetMapping("/list")
     suspend fun list(): ResponseEntity<List<BankAccountDto>> {
 
@@ -32,24 +32,33 @@ class BankAccountController @Autowired constructor(
         val res = bankService.findAll()
 
 
-        val list = res.map { bankAccount ->
-            val bankDto = bankAccount.toDto()
-            val user=userService.loadUserById(bankAccount.userId)
-            bankDto.userName = user!!.name
-            bankDto
-        }
+      val list= bankService.loadUsersToBank(res)
 
 
-        return ResponseEntity.ok(list.toList())
+      return ResponseEntity.ok(list)
     }
+    //FALLO DE SEGURIDAD PORQUE VES TODOS LOS ID Y ES AUTONUMERICO ; SE PODRIA TBM AÑADIR UN CAMPO UUID
     @GetMapping("/cuentasociada/{id}")
-    suspend fun cuentaAsociada(@PathVariable id:Long):ResponseEntity<List<BankAccount>>{
+    suspend fun cuentaAsociada(@PathVariable id:Long):ResponseEntity<List<BankAccountDto>>{
 
-        val res =bankService.findCuentaAsociada(id).toList();
+        val res =bankService.findCuentaAsociada(id);
 
-        return ResponseEntity.ok(res)
+        val list= bankService.loadUsersToBank(res)
+
+        return ResponseEntity.ok(list)
 
     }
+  //  @PreAuthorize("hasAnyRole('USER','ADMIN')")
+//    @GetMapping("/cuentasociada")
+//    suspend fun cuentaAsociada(@AuthenticationPrincipal user: Users):ResponseEntity<List<BankAccount>>{
+//
+//        val res =bankService.findCuentaAsociada(user.id).toList();
+//
+//        return ResponseEntity.ok(res)
+//
+//    }
+
+
 
 
 }

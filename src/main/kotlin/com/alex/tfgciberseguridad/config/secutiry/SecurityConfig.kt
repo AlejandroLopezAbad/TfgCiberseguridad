@@ -69,8 +69,9 @@ class SecurityConfig
 //            } .and()
 
             .authorizeHttpRequests()
-            .requestMatchers("/static/**").permitAll()
-            .requestMatchers("/error/**").permitAll()
+            //.requestMatchers("/static/**").permitAll()
+           .requestMatchers("/public/**").permitAll()
+            //.requestMatchers("/error/**").permitAll()
             .requestMatchers("/**").permitAll()
 
 //

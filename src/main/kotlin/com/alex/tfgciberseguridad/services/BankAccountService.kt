@@ -1,16 +1,23 @@
 package com.alex.tfgciberseguridad.services
 
+import com.alex.tfgciberseguridad.dto.BankAccountDto
+import com.alex.tfgciberseguridad.mapper.toDto
+import com.alex.tfgciberseguridad.models.BankAccount
 import com.alex.tfgciberseguridad.models.Users
 import com.alex.tfgciberseguridad.repositories.BankAccountRepository
 import com.alex.tfgciberseguridad.repositories.UsersRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.withContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 @Service
 class BankAccountService
 @Autowired constructor(
-    private val bankAccountrepo:BankAccountRepository
+    private val bankAccountrepo:BankAccountRepository,
+    private val userService:UsersService
 ){
     /**
      * Buscar a todos los bankAccount
@@ -23,6 +30,16 @@ class BankAccountService
 
     suspend fun findCuentaAsociada(id:Long)= withContext(Dispatchers.IO){
         return@withContext  bankAccountrepo.findAllByUserId(id)
+    }
+
+    suspend fun loadUsersToBank (res: Flow<BankAccount>) = withContext(Dispatchers.IO){
+        val list = res.map { bankAccount ->
+            val bankDto = bankAccount.toDto()
+            val user=userService.loadUserById(bankAccount.userId)
+            bankDto.userName = user!!.name
+            bankDto
+        }
+        return@withContext list.toList()
     }
 
 

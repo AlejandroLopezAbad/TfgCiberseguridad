@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+
 import { User } from 'src/app/entities/user';
-import { UserService } from 'src/app/services/user/user.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-user-table',
@@ -10,20 +10,21 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UserTableComponent implements OnInit {
 
-    users!:User[];
+    users!: User[];
 
-    constructor(private userService:UserService) {
-    
-         this.getAllUsers();
-    }
+    constructor(private userService: UserService) {}
 
     ngOnInit() {
-        
+        this.getUsers();
     }
 
-    getAllUsers() {
-        this.userService.getAllUsers().subscribe(result => {
+    getUsers() {
+        this.userService.getUsers().subscribe(result => {
             this.users = result;
         });
     }
+
+
+
+
 }

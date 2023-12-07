@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Login } from "src/app/entities/login";
-
+import { AuthService } from "src/app/services/auth.service";
 import { Router } from '@angular/router';
-import { UserService } from "src/app/services/user/user.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
     selector: 'app-home',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     showMessage: boolean = false;
     errorMessage: string = "";
 
-    constructor(private router:Router, private userService: UserService) {
+    constructor(private router:Router, private userService: UserService,private authService:AuthService) {
         this.login = new Login();
     }
 
@@ -34,10 +34,8 @@ export class LoginComponent implements OnInit {
     log() {
         if(this.login.email != null && this.login.password != null) {
            
-            this.userService.login(this.login).subscribe(resul => {
+            this.authService.login(this.login).subscribe(resul => {
                 console.log(resul);
-                
-             
                 this.router.navigate(['/user-table']);
             },
             (error) => {

@@ -5,7 +5,7 @@ export class User {
     password: string | null;
     telephone: string | null;
     dni: string | null;
-    //roll: string | null;
+    rol: string | null;
 
     constructor() {
         this.id = null;
@@ -14,5 +14,6 @@ export class User {
         this.password = null;
         this.telephone = null;
         this.dni = null;
+        this.rol=null;
     }
 }

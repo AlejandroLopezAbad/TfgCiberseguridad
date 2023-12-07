@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.*
 
@@ -64,7 +65,7 @@ class UsersController
     }
 
 
-
+    //@PreAuthorize("hasAnyRole('ADMIN')") capar tbm security config
     @GetMapping("/list")
     suspend fun list(): ResponseEntity<List<UsersDto>> {
 
@@ -83,7 +84,7 @@ class UsersController
         print(res)
         return ResponseEntity.ok(list.toList())
     }
-
+    //@PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/{id}")
     suspend fun findById(@PathVariable id:Long): ResponseEntity<UsersDto> {
         val res = usersService.loadUserById(id)
@@ -98,6 +99,14 @@ class UsersController
         }
         return ResponseEntity.ok(usersDto)
     }
+    //@PreAuthorize("hasAnyRole('USER','ADMIN')")
+//    @GetMapping("/me")
+//    suspend fun findme(@AuthenticationPrincipal user: Users): ResponseEntity<UsersDto> {
+//
+//        val usersDto= user?.toDto()
+//
+//        return ResponseEntity.ok(usersDto)
+//    }
 
 
 
