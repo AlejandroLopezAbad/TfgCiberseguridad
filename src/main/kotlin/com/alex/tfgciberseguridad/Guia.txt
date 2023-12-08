@@ -17,11 +17,6 @@ FLUENT WAIT PYHTON
 FRONT CON EL GUARD
 alberto.madera@educa.madrid.org tutordam
 
-exepciones , validadores
-
-Crear segundo docker compose en el servirdor con puertobase de datos capado
-quitar el puerto expuesto de 3306 para que solo la api pueda verlo en la version secure
-
 
 poner ngix en el server (limitacion peticiones) (solo en el secure) ( caparlo en el back ,
 
@@ -34,9 +29,7 @@ cuando llegue al limite 5 , que envie un correo,
 
 hacer peticiones postman.
 
-Para hacer dos docker compose una vulnerable y otra no
-meterme en el docker compose vulnerable y cambiar latest por el tag
-de la ultima vulnerable
+
 
 Servicio a futuros el poder crear un usuario con cuenta bancaria ,
 FusionBank es un administrador de cuentas bancarias
@@ -48,11 +41,6 @@ ATAQUE DICCIONARIO HECHO
 
 conseguir rutas que funcione, HECHO
 
-BUSCAR TOOL QUE ME SAQUE EL TREE DE TODAS LAS PAGINAS WEB
-
-VERSION SEGURIDAD
-QUE PASES POR EL LOGIN
-CAPAR QUE USERTABLE Y BANK TABLE SOLO SALGAN SI TIENES EL TOKEN, con GUARD
 
 
 
@@ -63,12 +51,9 @@ CAPAR QUE USERTABLE Y BANK TABLE SOLO SALGAN SI TIENES EL TOKEN, con GUARD
 lucia', 'simpática
 'pedro', 'honesto'
 
-front ayuda roberto cambiar los getmy si solo tiene rol de usuario
-crear un objeto con el usuario que devuelve cuando haces el login
-para poder utilizarlo en los demas servicios
 
-no estoy enviado bien lo que tengo que enviar al back es decir tengo
-cambiar los metodos el objeto que se envia y (guardar el token cuando hago el login) necesito el objeto entero
+
+
 
 
 
