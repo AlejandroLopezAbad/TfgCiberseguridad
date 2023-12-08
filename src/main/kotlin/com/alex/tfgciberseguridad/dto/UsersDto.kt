@@ -12,7 +12,9 @@ data class UsersDto(
     val telephone:String,
     val dni:String,
     val rol: Set<String> = setOf(Users.TypeRol.USER.name),
-    var numCuenta: List<BankAccount>? = listOf()
+    var numCuenta: List<BankAccount>? = listOf(),
+    var contador:Int,
+    var bloqueado:Boolean
 )
 
 /**

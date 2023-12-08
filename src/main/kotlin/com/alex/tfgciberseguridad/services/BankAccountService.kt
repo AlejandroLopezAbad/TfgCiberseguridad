@@ -1,6 +1,8 @@
 package com.alex.tfgciberseguridad.services
 
 import com.alex.tfgciberseguridad.dto.BankAccountDto
+import com.alex.tfgciberseguridad.exception.BankAccountBadRequestException
+import com.alex.tfgciberseguridad.exception.UsersBadRequestException
 import com.alex.tfgciberseguridad.mapper.toDto
 import com.alex.tfgciberseguridad.models.BankAccount
 import com.alex.tfgciberseguridad.models.Users
@@ -8,11 +10,15 @@ import com.alex.tfgciberseguridad.repositories.BankAccountRepository
 import com.alex.tfgciberseguridad.repositories.UsersRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.withContext
+import mu.KotlinLogging
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+
+private val logger = KotlinLogging.logger {}
 @Service
 class BankAccountService
 @Autowired constructor(
@@ -44,66 +50,51 @@ class BankAccountService
 
 
 
-
-
-
-}
-
-
-/*
-//private val passwordEndocer:PassWordEncoder
-){
-
-
     /**
-     * Buscar a un usuario por su id.
-     * @param userId id del usuario a buscar
-     * @return el usuario encontrado
-     */
-    suspend fun loadUserById(userId: Long) = withContext(Dispatchers.IO) {
-        return@withContext repository.findById(userId)
-    }
-
-    /**
-     * Guardar un usuario.
-     * @param user usuario a salvar.
-     * @return el usuario guardado.
+     * Guardar una BankAccount.
+     * @param bankAccount BankAccount a salvar.
+     * @return el BankAccount guardado.
      */
 
-    suspend fun save(user: Users): Users = withContext(Dispatchers.IO){
-        logger.info { "Guardando usuario: $user" }
-        //TODO
+    suspend fun save(bankAccount: BankAccount): BankAccount = withContext(Dispatchers.IO) {
+        logger.info { "Guardando usuario: $bankAccount" }
 
-
-        try{
-            return@withContext repository.save(user)
-        }catch (e:Exception){
-            throw Exception("no guardado")
+        if (bankAccountrepo.findByNumCuenta(bankAccount.numCuenta).firstOrNull() != null) {
+            throw BankAccountBadRequestException("Ya existe una cuenta con este numero de cuenta")
+        }
+        logger.info(bankAccount.toString())
+        try {
+            return@withContext bankAccountrepo.save(bankAccount)
+        } catch (e: Exception) {
+            throw UsersBadRequestException("Error al crear el usuario: Nombre de usuario o email ya existen")
         }
 
     }
-
 
     /**
      * Actualizar usuario
      * @param user usuario a actualizar
      * @return el usuario actualizado.
      */
-    suspend fun update(user: Users) = withContext(Dispatchers.IO) {
-        logger.info { "Actualizando usuario: $user" }
-        //TODO COMPROBAR QUE EL USUARIO EXISTE
-        /*        var userDB = repository.findByUsername(user.username)
-                    .firstOrNull()
+    suspend fun update(bankAccount: BankAccount) = withContext(Dispatchers.IO) {
+        logger.info { "Actualizando usuario: $bankAccount" }
 
-                val updateUser= use*/
+        val bankAccountDb = bankAccountrepo.findByNumCuenta(bankAccount.numCuenta)
+            .firstOrNull()
+        if (bankAccountDb != null && bankAccountDb.numCuenta != bankAccount.numCuenta) {
+            throw UsersBadRequestException("El numero de cuenta ya existe")
+        }
 
         try {
-            return@withContext repository.save(user)
+            return@withContext bankAccountrepo.save(bankAccount)
         } catch (e: Exception) {
             println(e.message)
-            throw Exception("no actualizado")
+            throw  UsersBadRequestException("Error al actualizar la cuenta bancaria : Numero de cuenta ya existen")
         }
 
     }
+
+    
 }
-*/
+
+

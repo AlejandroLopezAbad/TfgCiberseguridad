@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails
 @Table(name = "users")
 data class Users(
     @Id
-    val id :Long,
+    val id :Long?=null,
     @Column("email")
     val email:String,
     @Column("name")
@@ -29,6 +29,12 @@ data class Users(
     val dni:String,
     @Column("rol")
     val rol :String=TypeRol.USER.name,
+    @Column("contador")
+    var contador :Int,
+    @Column("bloqueado")
+    var bloqueado:Boolean
+
+
 
 
 ) : UserDetails {

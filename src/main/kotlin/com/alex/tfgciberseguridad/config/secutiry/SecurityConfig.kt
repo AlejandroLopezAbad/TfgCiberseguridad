@@ -74,20 +74,20 @@ class SecurityConfig
             //.requestMatchers("/error/**").permitAll()
             .requestMatchers("/**").permitAll()
 
-//
-
-            .requestMatchers("/api/**").permitAll() //esto permite todas las consultas a la api
-
+            //.requestMatchers("/api/**").permitAll() //esto permite todas las consultas a la api
             .requestMatchers("/api/users/login").permitAll()
-            //TODO CON ESTO PUEDE LANZAR LA PETICION CUALQUIERA ES UNA BRECHA DE SEGURIDAD
-            .requestMatchers("/api/users/list").permitAll()
-            .requestMatchers("/api/bankAccount/list").permitAll()
 
 
-//              TODO CAPAR LAS RUTAS
-//            .requestMatchers("/api/users/list").hasAnyRole("USER","ADMIN")
-//            .requestMatchers("/api/bankAccount/list").hasAnyRole("USER","ADMIN")
-//           /.permitAll()//.hasAnyRole("EMPLOYEE","ADMIN","SUPERADMIN")
+            .requestMatchers("/api/users/list").hasAnyRole("ADMIN")
+            .requestMatchers("/api/bankAccount/list").hasAnyRole("ADMIN")
+
+                //TODO QUITAR INSEGURAS
+            .requestMatchers("/api/bankAccount/cuentasociada/{id}").hasAnyRole("USER","ADMIN")
+            .requestMatchers("/api/users/{id}").hasAnyRole("USER","ADMIN")
+
+            //TODO ESTA SON LAS BUENAS
+            .requestMatchers("/api/users/me").hasAnyRole("USER","ADMIN")
+            .requestMatchers("/api/bankAccount/cuentasociada").hasAnyRole("USER","ADMIN")
 
             .and()
 

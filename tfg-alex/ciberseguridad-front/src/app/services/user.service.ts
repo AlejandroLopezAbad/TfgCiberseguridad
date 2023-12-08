@@ -8,6 +8,7 @@ import { map } from "rxjs";
 import { UserWithToken } from "../entities/userWithToken";
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,19 +20,19 @@ export class UserService {
     return this.http.get<User[]>(`${environment.server}/api/users/list`)
   }
 
-
-  getUserById(id: string) {
-    return this.http.get<User>(`${environment.server}/api/users/${id}`)
-  }
-
- // getmeInfo(user:UserWithToken){
- //   return this.http.get<User>(`${environment.server}/api/users/me`)
+//Ines
+// getUserById(id: string) {
+   //return this.http.get<User>(`${environment.server}/api/users/${id}`)
  // }
+
+  getmeInfo(){
+   return this.http.get<User>(`${environment.server}/api/users/me`)
+ }
 
   getUsers() {
     if (this.authService.token?.roles.includes("USER")) {
-
-      return this.getUserById(this.authService.token.sub!!).pipe(
+        //TODO CAMBIAR
+      return this.getmeInfo().pipe(
         map(response => { return [response] })
       );
 

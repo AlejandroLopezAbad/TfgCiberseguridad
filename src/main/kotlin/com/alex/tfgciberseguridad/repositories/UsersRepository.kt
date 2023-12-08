@@ -14,6 +14,18 @@ interface UsersRepository:CoroutineCrudRepository<Users,Long> {
      * @param email
      * @return
      */
+    fun findUsersByEmail(email:String):Flow<Users>
+
+
+    /**
+     * Find by telephone
+     *
+     * @param telephone
+     * @return
+     */
+    fun findByTelephone(telephone: Int): Flow<Users>
+
+
     fun findByEmail(email:String):Flow<Users>
 
 

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TableModule } from 'primeng/table';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { APP_ROUTING } from './app.route';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { NavComponent } from './components/nav/nav.component';
@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
 import { BankAccountTableComponent } from './components/bank-account-table/bank-account-table.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -36,9 +37,14 @@ import { BankAccountTableComponent } from './components/bank-account-table/bank-
     InputTextModule,
     FormsModule,
     ButtonModule,
-    DataViewModule
+    DataViewModule,
+    
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

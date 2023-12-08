@@ -15,6 +15,7 @@ hacer ataque intento D2
 FLUENT WAIT PYHTON
 
 FRONT CON EL GUARD
+alberto.madera@educa.madrid.org tutordam
 
 exepciones , validadores
 
@@ -42,6 +43,32 @@ FusionBank es un administrador de cuentas bancarias
 el usuario puede ver solo sus cuentas bancarias
 y el admin puede ver todas
 
+
+ATAQUE DICCIONARIO HECHO
+
+conseguir rutas que funcione, HECHO
+
+BUSCAR TOOL QUE ME SAQUE EL TREE DE TODAS LAS PAGINAS WEB
+
+VERSION SEGURIDAD
+QUE PASES POR EL LOGIN
+CAPAR QUE USERTABLE Y BANK TABLE SOLO SALGAN SI TIENES EL TOKEN, con GUARD
+
+
+
+'lara', 'amable
+'paco', 'gracioso'
+'mila', 'creativa'
+'juan', 'serio'
+lucia', 'simpática
+'pedro', 'honesto'
+
+front ayuda roberto cambiar los getmy si solo tiene rol de usuario
+crear un objeto con el usuario que devuelve cuando haces el login
+para poder utilizarlo en los demas servicios
+
+no estoy enviado bien lo que tengo que enviar al back es decir tengo
+cambiar los metodos el objeto que se envia y (guardar el token cuando hago el login) necesito el objeto entero
 
 
 

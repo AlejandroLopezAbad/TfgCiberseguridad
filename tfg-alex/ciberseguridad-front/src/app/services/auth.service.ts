@@ -11,10 +11,16 @@ import { User } from "../entities/user";
     providedIn: 'root'
 })
 export class AuthService {
-
+   private isAuthenticatedvariable = false;
+    rawtoken?:String
     token?: JwtPayload & {roles:string};
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        
+    }
 
+    get isAuthenticated (): boolean {
+        return this.isAuthenticatedvariable;
+      }
 
     login(login: Login): Observable<HttpResponse<UserWithToken>> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -22,13 +28,22 @@ export class AuthService {
             .pipe(
                 map((response) => {
                     if (response.status == 200 && response.body != undefined) {
+                        this.rawtoken=response.body.token
                         this.token = jwtDecode(response.body.token)
+                        this.isAuthenticatedvariable=true
                        
                     }
                     return response;
                 })
             );
     }
+
+    logout(){
+
+        this.isAuthenticatedvariable = false;
+    }
+
+ 
 
 
 

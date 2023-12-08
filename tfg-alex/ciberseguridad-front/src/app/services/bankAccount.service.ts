@@ -5,6 +5,7 @@ import { BankAccount } from "src/app/entities/bankAccount";
 import { environment } from "src/environments/environment";
 import { AuthService } from "./auth.service";
 import { map } from "rxjs";
+import { UserWithToken } from "../entities/userWithToken";
 
 
 
@@ -20,15 +21,19 @@ export class BankAccountService {
         return this.http.get<BankAccount[]>(`${environment.server}/api/bankAccount/list`)
     }
 
-    getMyBankAccount(id:String){
-        return this.http.get<BankAccount[]>(`${environment.server}/api/bankAccount/cuentasociada/${id}`)
-    }
+   // getMyBankAccount(id:String){
+  //      return this.http.get<BankAccount[]>(`${environment.server}/api/bankAccount/cuentasociada/${id}`)
+ //   }
 
+
+    getmyInfoBankAccount(){
+      return this.http.get<BankAccount[]>(`${environment.server}/api/bankAccount/cuentasociada`)
+    }
 
     getBankAccount(){
         if (this.authService.token?.roles.includes("USER")) {
     
-          return this.getMyBankAccount(this.authService.token.sub!!);
+          return this.getmyInfoBankAccount();
     
         } else if (this.authService.token?.roles.includes("ADMIN")) {
           return this.getAllBankAccount()
