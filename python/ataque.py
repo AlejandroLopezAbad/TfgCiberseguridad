@@ -42,7 +42,7 @@ for password in list_password:
     try:
         email_input.clear()  # Limpiar el campo de correo electrónico
         password_input.clear()  # Limpiar el campo de contraseña
-        email_input.send_keys("alex@email.com")
+        email_input.send_keys("alberto.madera@educa.madrid.org")
         password_input.send_keys(password)
         print(f"probando con esta : {password}")
        

@@ -96,7 +96,7 @@ class UsersController
         return ResponseEntity.ok(list.toList())
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/{id}")
     suspend fun findById(@PathVariable id: Long): ResponseEntity<UsersDto> {
         val res = usersService.loadUserById(id)

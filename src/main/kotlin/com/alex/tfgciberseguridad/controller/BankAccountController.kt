@@ -39,7 +39,7 @@ class BankAccountController @Autowired constructor(
       return ResponseEntity.ok(list)
     }
     //FALLO DE SEGURIDAD PORQUE VES TODOS LOS ID Y ES AUTONUMERICO ; SE PODRIA TBM AÑADIR UN CAMPO UUID
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/cuentasociada/{id}")
     suspend fun cuentaAsociada(@PathVariable id:Long):ResponseEntity<List<BankAccountDto>>{
 
