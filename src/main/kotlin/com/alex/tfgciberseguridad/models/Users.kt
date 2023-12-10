@@ -72,15 +72,4 @@ data class Users(
     }
 }
 
-/**
- * /**
- * Función que verifica si un valor posee una estructura valida de cuenta IBAN.
- * @param {String} strValue String que se desea revisar.
- * @returns {boolean} Indicando si cumple o no las restricciones
-*/
-function isValidStructureIBAN(strValue){
-return /[a-zA-Z]{2}[0-9]{20}$/g.test(strValue);
-}// Fin de la función isValidStructureIBAN.
 
- regex dni ^[0-9]{8,8}[A-Za-z]$
- */

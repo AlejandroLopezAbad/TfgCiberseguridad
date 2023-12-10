@@ -66,7 +66,7 @@ class BankAccountService
         try {
             return@withContext bankAccountrepo.save(bankAccount)
         } catch (e: Exception) {
-            throw UsersBadRequestException("Error al crear el usuario: Nombre de usuario o email ya existen")
+            throw BankAccountBadRequestException("Error al crear el usuario: Nombre de usuario o email ya existen")
         }
 
     }
@@ -82,14 +82,14 @@ class BankAccountService
         val bankAccountDb = bankAccountrepo.findByNumCuenta(bankAccount.numCuenta)
             .firstOrNull()
         if (bankAccountDb != null && bankAccountDb.numCuenta != bankAccount.numCuenta) {
-            throw UsersBadRequestException("El numero de cuenta ya existe")
+            throw BankAccountBadRequestException("El numero de cuenta ya existe")
         }
 
         try {
             return@withContext bankAccountrepo.save(bankAccount)
         } catch (e: Exception) {
             println(e.message)
-            throw  UsersBadRequestException("Error al actualizar la cuenta bancaria : Numero de cuenta ya existen")
+            throw  BankAccountBadRequestException("Error al actualizar la cuenta bancaria : Numero de cuenta ya existen")
         }
 
     }

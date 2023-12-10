@@ -1,5 +1,6 @@
 package com.alex.tfgciberseguridad.config.secutiry.jwt
 
+import com.alex.tfgciberseguridad.exception.TokenInvalidException
 import com.alex.tfgciberseguridad.models.Users
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
@@ -71,8 +72,8 @@ class JwtTokenUtil {
         try {
             return JWT.require(Algorithm.HMAC512(jwtSecreto)).build().verify(authToken)
         } catch (e: Exception) {
-          //  throw TokenInvalidException("Token no válido o expirado") TODO
-            throw  Exception("token no valido o expirado")
+           throw TokenInvalidException("Token no válido o expirado")
+
         }
     }
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @Controller
-class HomeController {
+class AngularController {
     @GetMapping(value = ["/{path:[^.]*}"])
     fun redirect(): String {
         return "forward:/"

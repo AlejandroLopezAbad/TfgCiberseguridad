@@ -4,24 +4,11 @@ COMANDO ACTUALIZAR IMAGEN DEL FRONT
 docker compose -f docker-composeVULNERABLE.yml pull
 
 
-
-
-Hacer los ataque diccionario HECHO
-hacer ataque ver puertos del servidor HECHO Y ATAQUE BASE DE DATOS HECHO
-hacer ataque de que cuando logueas te devuelve un token y si te das cuenta lo hace todo el rato por id , entonces es una brecha de seguridad, (POSTMAN)
-
-hacer ataque intento D2
-
-FLUENT WAIT PYHTON
-
 FRONT CON EL GUARD
 alberto.madera@educa.madrid.org tutordam
 
 
-poner ngix en el server (limitacion peticiones) (solo en el secure) ( caparlo en el back ,
 
-otra forma seria añadir campo  boolen (bloquado tabla users ) y contador y si llega a 5 que se cambie a bloqueado
-logiga del back , cada vez que se hace una peticion de login con ese correo añadir un +1 al contador, y si es logeo acceptado que se cambie por 0,
 
 cuando llegue al limite 5 , que envie un correo,
 

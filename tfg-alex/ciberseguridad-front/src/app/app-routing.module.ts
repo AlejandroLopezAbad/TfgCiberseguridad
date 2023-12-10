@@ -4,7 +4,7 @@ import { RouterModule, Routes, withHashLocation } from '@angular/router';
 const routes: Routes = [];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})], //TODO si quiero que no puedan acceder a las otras paginas , les obligo que pasen por el login 
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

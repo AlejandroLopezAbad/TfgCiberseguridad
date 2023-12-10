@@ -26,15 +26,15 @@ class SecurityConfig
 @Autowired constructor(
     private val userService: UsersService,
     private val jwtTokenUtil: JwtTokenUtil
-){
+) {
     /**
      * Configuración del Authentication Manager.
      * @param http http security.
      * @return el Authentication Manager ya creado y con el user detail service asignado.
      */
     @Bean
-    fun authManager(http:HttpSecurity): AuthenticationManager {
-        val authenticationManagerBuilder=http.getSharedObject(
+    fun authManager(http: HttpSecurity): AuthenticationManager {
+        val authenticationManagerBuilder = http.getSharedObject(
             AuthenticationManagerBuilder::class.java
         )
         authenticationManagerBuilder.userDetailsService(userService)
@@ -48,7 +48,7 @@ class SecurityConfig
      */
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        val authenticationManager=authManager(http)
+        val authenticationManager = authManager(http)
 
         http
             .csrf()
@@ -58,25 +58,14 @@ class SecurityConfig
             .authenticationManager(authenticationManager)
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-//            .exceptionHandling()
-//            .authenticationEntryPoint { request, response, e ->
-//                response.contentType = "application/json;charset=UTF-8"
-//                response.status = HttpServletResponse.SC_FORBIDDEN
-//                // Loggeando el error
-//                println("Access denied: "+ e.toString())
-//                println("Request details: " + request.toString())
-//
-//            } .and()
 
             .authorizeHttpRequests()
-            //.requestMatchers("/static/**").permitAll()
-           .requestMatchers("/public/**").permitAll()
-            //.requestMatchers("/error/**").permitAll()
+
+            .requestMatchers("/public/**").permitAll()
+
             .requestMatchers("/**").permitAll()
 
-            //.requestMatchers("/api/**").permitAll() //esto permite todas las consultas a la api
             .requestMatchers("/api/users/login").permitAll()
-
 
             .requestMatchers("/api/users/list").hasAnyRole("ADMIN")
             .requestMatchers("/api/bankAccount/list").hasAnyRole("ADMIN")
@@ -86,8 +75,8 @@ class SecurityConfig
             .requestMatchers("/api/users/{id}").hasAnyRole("ADMIN")
 
 
-            .requestMatchers("/api/users/me").hasAnyRole("USER","ADMIN")
-            .requestMatchers("/api/bankAccount/cuentasociada").hasAnyRole("USER","ADMIN")
+            .requestMatchers("/api/users/me").hasAnyRole("USER", "ADMIN")
+            .requestMatchers("/api/bankAccount/cuentasociada").hasAnyRole("USER", "ADMIN")
 
             .and()
 
