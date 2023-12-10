@@ -81,11 +81,11 @@ class SecurityConfig
             .requestMatchers("/api/users/list").hasAnyRole("ADMIN")
             .requestMatchers("/api/bankAccount/list").hasAnyRole("ADMIN")
 
-                //TODO QUITAR INSEGURAS
-            .requestMatchers("/api/bankAccount/cuentasociada/{id}").hasAnyRole("USER","ADMIN")
-            .requestMatchers("/api/users/{id}").hasAnyRole("USER","ADMIN")
 
-            //TODO ESTA SON LAS BUENAS
+            .requestMatchers("/api/bankAccount/cuentasociada/{id}").hasAnyRole("ADMIN")
+            .requestMatchers("/api/users/{id}").hasAnyRole("ADMIN")
+
+
             .requestMatchers("/api/users/me").hasAnyRole("USER","ADMIN")
             .requestMatchers("/api/bankAccount/cuentasociada").hasAnyRole("USER","ADMIN")
 
