@@ -1,0 +1,25 @@
+<div class="fondo">
+    <div class="title-container">
+        <h1>FusionBank</h1>
+    </div>
+<div class="flex-column">
+
+    <div>
+        <p>Acceso Clientes</p>
+    </div>
+
+    <div class="p-float-label margin-top"> 
+        <input id="email" type="text" pInputText [(ngModel)]="login.email" />
+        <label class="fuerte" htmlFor="email">Email</label>
+    </div>
+    <div class="p-float-label margin-top">
+        <input id="password" *ngIf="!showPass" type="password" pInputText [(ngModel)]="login.password" />
+        <input id="password" *ngIf="showPass" type="text" pInputText [(ngModel)]="login.password" />
+        <label class="fuerte" htmlFor="password">Password</label>
+        <i *ngIf="!showPass" class="pi pi-eye" (click)="showPassword()"></i>
+        <i *ngIf="showPass" class="pi pi-eye-slash" (click)="showPassword()"></i>
+    </div>
+    <p class="error" *ngIf="showMessage">Las credenciales son necesarias para proceder con el logueo.</p>
+    <p-button  id="bto_login"label="Login" (onClick)="log()"></p-button>
+</div>
+</div>

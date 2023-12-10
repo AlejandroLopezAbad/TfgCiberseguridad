@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  mariaDb:
+    image: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: cibertfg
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: securityPass
+      MARIADB_DATABASE : ciberseguridad
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+
+
+  servicio-ciberseguridad:
+    image: alexitto/tfg_ciberseguridad:1.0.0-SEGURO
+    container_name: servicio-ciberseguridad
+    environment:
+      CONNECTION_STRING: r2dbc:mariadb://root:cibertfg@mariaDb:3306/ciberseguridad
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mariaDb
