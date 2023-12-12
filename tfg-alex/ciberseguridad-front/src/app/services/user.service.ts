@@ -31,7 +31,7 @@ export class UserService {
 
   getUsers() {
     if (this.authService.token?.roles.includes("USER")) {
-
+        
       return this.getmeInfo().pipe(
         map(response => { return [response] })
       );

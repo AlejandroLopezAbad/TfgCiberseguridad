@@ -6,7 +6,7 @@ export class User {
     telephone: string | null;
     dni: string | null;
     rol: string | null;
-    block:boolean| null;
+    bloqueado:boolean| null;
 
     constructor() {
         this.id = null;
@@ -16,6 +16,6 @@ export class User {
         this.telephone = null;
         this.dni = null;
         this.rol=null;
-        this.block=null;
+        this.bloqueado=null;
     }
 }
